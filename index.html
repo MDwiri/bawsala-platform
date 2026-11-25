@@ -209,7 +209,7 @@
               </div>
               <div>
                 <h4 class="font-display font-bold text-sm text-slate-800">القرآن والموسيقى</h4>
-                <p class="text-xs text-slate-500 mt-0.5">تلاوات وأصوات طبيعة مريحة</p>
+                <p class="text-xs text-slate-500 mt-0.5">قسم القرآن وقسم الموسيقى منفصلان</p>
               </div>
             </button>
 
@@ -290,61 +290,97 @@
           </div>
         </div>
 
-        <!-- Audio Player Section (Quran & Ambient Music) -->
-        <div id="audio-player-card" class="bg-white rounded-3xl p-5 shadow-sm border border-sand-200/80 space-y-4">
-          <div class="flex items-center justify-between">
-            <div>
-              <h2 class="font-display font-bold text-lg text-sage-800">القرآن الكريم والموسيقى الهادئة</h2>
-              <p class="text-xs text-slate-500">اختر المقطع واستمع داخل بوصلة دون مغادرة الموقع</p>
-            </div>
-            <span class="w-9 h-9 rounded-xl bg-teal-50 text-tealcalm-600 flex items-center justify-center">
-              <i class="fa-solid fa-music"></i>
-            </span>
-          </div>
+        <!-- Audio Player Section: Separated into Quran & Music -->
+        <div id="audio-player-card" class="space-y-4">
 
-          <!-- Active Track Player Box -->
-          <div class="bg-gradient-to-br from-sage-800 to-tealcalm-600 text-white rounded-2xl p-4 space-y-3 shadow-md">
-            <!-- Embedded YouTube player (plays INSIDE the site) -->
-            <div class="rounded-xl overflow-hidden aspect-video bg-black/60 w-full"><div id="yt-main"></div></div>
+          <!-- Top Switcher between Section 1 (Quran) and Section 2 (Music) -->
+          <div class="bg-white rounded-3xl p-4 shadow-sm border border-sand-200/80 space-y-3">
             <div class="flex items-center justify-between">
-              <div class="space-y-0.5">
-                <span id="track-badge" class="text-[11px] px-2 py-0.5 rounded-md bg-white/15 text-emerald-100">قائمة التشغيل</span>
-                <h4 id="track-title" class="font-display font-bold text-base pt-1">جارٍ التحميل...</h4>
-                <p id="track-subtitle" class="text-xs text-white/80">مبادرة بوصلة</p>
+              <div>
+                <h2 class="font-display font-bold text-lg text-sage-800">الاستماع الصوتي المنظّم</h2>
+                <p class="text-xs text-slate-500">اختر القسم المطلوب: القرآن الكريم أو الموسيقى الهادئة</p>
               </div>
-              <button id="main-play-btn" aria-label="تشغيل / إيقاف" onclick="toggleAudioPlay()" class="w-12 h-12 rounded-full bg-white text-sage-800 flex items-center justify-center text-lg shadow-lg hover:scale-105 active:scale-95 transition">
-                <i class="fa-solid fa-play ml-0.5"></i>
+              <span class="w-9 h-9 rounded-xl bg-teal-50 text-tealcalm-600 flex items-center justify-center">
+                <i class="fa-solid fa-layer-group"></i>
+              </span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 bg-sand-100 p-1.5 rounded-2xl">
+              <button id="media-cat-quran" type="button" onclick="switchMediaCategory('quran')" class="py-2.5 px-3 rounded-xl text-xs font-bold bg-white text-sage-800 shadow-sm transition flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-book-quran text-sage-700"></i>
+                <span>القسم الأول: القرآن</span>
+              </button>
+              <button id="media-cat-music" type="button" onclick="switchMediaCategory('music')" class="py-2.5 px-3 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-800 transition flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-music text-tealcalm-600"></i>
+                <span>القسم الثاني: الموسيقى</span>
               </button>
             </div>
-
-            <!-- Real progress / seek -->
-            <div class="space-y-1" dir="ltr">
-              <input id="audio-seek" type="range" min="0" max="1000" value="0" aria-label="التقدم في التشغيل"
-                     oninput="seekAudio(this.value)" class="w-full h-1.5 accent-emerald-300 cursor-pointer" />
-              <div class="flex justify-between text-[11px] text-white/75">
-                <span id="audio-current-time">00:00</span>
-                <span id="audio-duration">--:--</span>
-              </div>
-            </div>
-
-            <!-- Prev / Next / Volume -->
-            <div class="flex items-center justify-between gap-3" dir="ltr">
-              <div class="flex items-center gap-2">
-                <button onclick="prevTrack()" aria-label="المقطع السابق" class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 transition"><i class="fa-solid fa-backward-step"></i></button>
-                <button onclick="nextTrack()" aria-label="المقطع التالي" class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 transition"><i class="fa-solid fa-forward-step"></i></button>
-              </div>
-              <div class="flex items-center gap-2 flex-1 max-w-[150px]">
-                <i class="fa-solid fa-volume-low text-white/80 text-xs"></i>
-                <input id="audio-volume" type="range" min="0" max="100" value="80" aria-label="مستوى الصوت"
-                       oninput="setAudioVolume(this.value)" class="w-full h-1 accent-emerald-300 cursor-pointer" />
-              </div>
-            </div>
-                      </div>
-
-          <!-- Track List -->
-          <div id="audio-track-list" class="space-y-2">
-            <!-- Populated by JS -->
           </div>
+
+          <!-- Shared Active Track Player Box -->
+          <div class="bg-white rounded-3xl p-5 shadow-sm border border-sand-200/80 space-y-4">
+            <div class="bg-gradient-to-br from-sage-800 to-tealcalm-600 text-white rounded-2xl p-4 space-y-3 shadow-md">
+              <div class="rounded-xl overflow-hidden aspect-video bg-black/60 w-full"><div id="yt-main"></div></div>
+              <div class="flex items-center justify-between gap-2">
+                <div class="space-y-0.5 min-w-0">
+                  <span id="track-badge" class="inline-block text-[11px] px-2.5 py-0.5 rounded-md bg-white/15 text-emerald-100 font-bold">القسم الأول: القرآن الكريم</span>
+                  <h4 id="track-title" class="font-display font-bold text-base pt-1 truncate">جارٍ التحميل...</h4>
+                  <p id="track-subtitle" class="text-xs text-white/80 truncate">مبادرة بوصلة</p>
+                </div>
+                <button id="main-play-btn" aria-label="تشغيل / إيقاف" onclick="toggleAudioPlay()" class="w-12 h-12 rounded-full bg-white text-sage-800 flex items-center justify-center text-lg shadow-lg hover:scale-105 active:scale-95 transition shrink-0">
+                  <i class="fa-solid fa-play ml-0.5"></i>
+                </button>
+              </div>
+
+              <!-- Real progress / seek -->
+              <div class="space-y-1" dir="ltr">
+                <input id="audio-seek" type="range" min="0" max="1000" value="0" aria-label="التقدم في التشغيل"
+                       oninput="seekAudio(this.value)" class="w-full h-1.5 accent-emerald-300 cursor-pointer" />
+                <div class="flex justify-between text-[11px] text-white/75">
+                  <span id="audio-current-time">00:00</span>
+                  <span id="audio-duration">--:--</span>
+                </div>
+              </div>
+
+              <!-- Prev / Next / Volume -->
+              <div class="flex items-center justify-between gap-3" dir="ltr">
+                <div class="flex items-center gap-2">
+                  <button onclick="prevTrack()" aria-label="المقطع السابق" class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 transition"><i class="fa-solid fa-backward-step"></i></button>
+                  <button onclick="nextTrack()" aria-label="المقطع التالي" class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 transition"><i class="fa-solid fa-forward-step"></i></button>
+                </div>
+                <div class="flex items-center gap-2 flex-1 max-w-[150px]">
+                  <i class="fa-solid fa-volume-low text-white/80 text-xs"></i>
+                  <input id="audio-volume" type="range" min="0" max="100" value="80" aria-label="مستوى الصوت"
+                         oninput="setAudioVolume(this.value)" class="w-full h-1 accent-emerald-300 cursor-pointer" />
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 1 BOX: القرآن الكريم -->
+            <div id="quran-panel" class="space-y-2.5 pt-1">
+              <div class="flex items-center justify-between px-1">
+                <span class="font-display font-bold text-sm text-sage-800 flex items-center gap-1.5">
+                  <i class="fa-solid fa-book-quran text-sage-600"></i>
+                  <span>القسم الأول: القرآن الكريم</span>
+                </span>
+                <span id="quran-count-badge" class="text-[11px] font-bold bg-sage-50 text-sage-700 border border-sage-200 px-2.5 py-0.5 rounded-full">0 تلاوة</span>
+              </div>
+              <div id="quran-track-list" class="space-y-2"></div>
+            </div>
+
+            <!-- SECTION 2 BOX: الموسيقى الهادئة -->
+            <div id="music-panel" class="hidden space-y-2.5 pt-1">
+              <div class="flex items-center justify-between px-1">
+                <span class="font-display font-bold text-sm text-tealcalm-600 flex items-center gap-1.5">
+                  <i class="fa-solid fa-music text-tealcalm-500"></i>
+                  <span>القسم الثاني: الموسيقى الهادئة</span>
+                </span>
+                <span id="music-count-badge" class="text-[11px] font-bold bg-teal-50 text-tealcalm-600 border border-teal-200 px-2.5 py-0.5 rounded-full">0 مقطع</span>
+              </div>
+              <div id="music-track-list" class="space-y-2"></div>
+            </div>
+          </div>
+
         </div>
 
       </section>
@@ -768,18 +804,28 @@
       document.getElementById('breath-start-btn').innerHTML = '<i class="fa-solid fa-play"></i> ابدأ التمرين';
     }
 
-    // ---------------- 4. INTERNAL PLAYER (YouTube IFrame API: plays inside the site) ----------------
-    // To add a track: put its video ID (the 11 characters after youtu.be/) in PLAYLIST_IDS.
-    const PLAYLIST_IDS = ['eUDVUZZyA0M', '1e9B31FLT-s', 'qJoFnIdB59Y', 'GxzJ2scMHoQ', 'LOMpv4P56DI', 'iNfTSAzl1nI'];
-    // The book-explainer video moves to the Reading tab. Set its ID here, or leave null to auto-detect from its title.
+    // ---------------- 4. SEPARATED PLAYER: QURAN (SECTION 1) & MUSIC (SECTION 2) ----------------
+    // أضف معرفات تلاوات القرآن الكريم هنا (القسم الأول)
+    const QURAN_IDS = ['L9fz4SJkjDs', 'XYYF0bIG4eM', 'x-Ia1yfdLbo'];
+    // أضف معرفات المقاطع الموسيقية الهادئة هنا (القسم الثاني)
+    const MUSIC_IDS = ['eUDVUZZyA0M', '1e9B31FLT-s', 'qJoFnIdB59Y', 'GxzJ2scMHoQ', 'LOMpv4P56DI', 'iNfTSAzl1nI'];
+
+    // فيديو شرح الكتاب ينتقل إلى تبويب القراءة
     const BOOK_VIDEO_ID = null;
     const BOOK_KEYWORDS = /48|٤٨|قاعد|قوة|laws of power|greene/i;
+    const QURAN_KEYWORDS = /قرآن|قران|سورة|تلاوة|آية|اية|مصحف|quran|surah|recitation/i;
 
-    let tracks = PLAYLIST_IDS.map((id, i) => ({ id, title: 'مقطع ' + (i + 1), subtitle: 'مبادرة بوصلة' }));
-    let list = tracks.slice();
+    let quranTracks = QURAN_IDS.map((id, i) => ({ id, title: 'تلاوة قرآنية ' + (i + 1), subtitle: 'القسم الأول • القرآن الكريم', category: 'quran' }));
+    let musicTracks = MUSIC_IDS.map((id, i) => ({ id, title: 'موسيقى هادئة ' + (i + 1), subtitle: 'القسم الثاني • الموسيقى الهادئة', category: 'music' }));
     let bookTrack = null;
+
+    let activeCategory = 'quran'; // 'quran' or 'music'
     let currentTrackIdx = 0, isAudioPlaying = false, failCount = 0;
     let ytMain = null, ytBook = null, ytReady = false, metaReady = false;
+
+    function getActiveList() {
+      return activeCategory === 'quran' ? quranTracks : musicTracks;
+    }
 
     function fmtTime(sec) {
       if (!isFinite(sec) || sec <= 0) return '00:00';
@@ -799,28 +845,98 @@
     }
 
     async function loadMeta() {
+      const combined = [...quranTracks, ...musicTracks];
       await Promise.race([
-        Promise.all(tracks.map(async t => {
+        Promise.all(combined.map(async t => {
           const d = await fetchMeta(t.id);
-          if (d) { t.title = d.title; t.subtitle = d.author_name || t.subtitle; }
+          if (d) {
+            t.title = d.title;
+            t.subtitle = d.author_name || (t.category === 'quran' ? 'القرآن الكريم' : 'الموسيقى الهادئة');
+          }
         })),
         new Promise(r => setTimeout(r, 4000))
       ]);
-      bookTrack = tracks.find(t => BOOK_VIDEO_ID ? t.id === BOOK_VIDEO_ID : BOOK_KEYWORDS.test(t.title)) || null;
-      list = tracks.filter(t => t !== bookTrack);
-      if (!list.length) { list = tracks.slice(); bookTrack = null; }
+
+      // استخراج فيديو شرح الكتاب إن وُجد
+      bookTrack = combined.find(t => BOOK_VIDEO_ID ? t.id === BOOK_VIDEO_ID : BOOK_KEYWORDS.test(t.title)) || null;
+      const remaining = combined.filter(t => t !== bookTrack);
+
+      // إذا كان المستخدم وضع الكل في MUSIC_IDS مثلاً، نفرز أي مقطع قرآني واضح تلقائياً إلى قسم القرآن
+      const explicitQuran = remaining.filter(t => t.category === 'quran' || QURAN_KEYWORDS.test(t.title));
+      const explicitMusic = remaining.filter(t => t.category === 'music' && !QURAN_KEYWORDS.test(t.title));
+
+      quranTracks = explicitQuran;
+      musicTracks = explicitMusic;
+
+      if (quranTracks.length > 0) {
+        activeCategory = 'quran';
+      } else if (musicTracks.length > 0) {
+        activeCategory = 'music';
+      }
+      currentTrackIdx = 0;
+      updateCategoryButtons();
     }
 
-    function renderTrackList() {
-      document.getElementById('audio-track-list').innerHTML = list.map((t, idx) => {
-        const sel = idx === currentTrackIdx;
+    function updateCategoryButtons() {
+      const qBtn = document.getElementById('media-cat-quran');
+      const mBtn = document.getElementById('media-cat-music');
+      const qPanel = document.getElementById('quran-panel');
+      const mPanel = document.getElementById('music-panel');
+      const badge = document.getElementById('track-badge');
+
+      const isQuran = activeCategory === 'quran';
+      qBtn.className = isQuran
+        ? 'py-2.5 px-3 rounded-xl text-xs font-bold bg-white text-sage-800 shadow-sm transition flex items-center justify-center gap-1.5'
+        : 'py-2.5 px-3 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-800 transition flex items-center justify-center gap-1.5';
+      mBtn.className = !isQuran
+        ? 'py-2.5 px-3 rounded-xl text-xs font-bold bg-white text-tealcalm-600 shadow-sm transition flex items-center justify-center gap-1.5'
+        : 'py-2.5 px-3 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-800 transition flex items-center justify-center gap-1.5';
+
+      qPanel.classList.toggle('hidden', !isQuran);
+      mPanel.classList.toggle('hidden', isQuran);
+
+      badge.textContent = isQuran ? 'القسم الأول: القرآن الكريم' : 'القسم الثاني: الموسيقى الهادئة';
+    }
+
+    function switchMediaCategory(cat) {
+      if (activeCategory === cat) return;
+      activeCategory = cat;
+      currentTrackIdx = 0;
+      failCount = 0;
+      updateCategoryButtons();
+      renderTrackList();
+
+      const list = getActiveList();
+      if (list.length > 0) {
+        loadTrack(false);
+      } else {
+        document.getElementById('track-title').textContent = cat === 'quran'
+          ? 'لم تُضف تلاوات قرآن بعد في QURAN_IDS'
+          : 'لم تُضف مقاطع موسيقى بعد في MUSIC_IDS';
+        document.getElementById('track-subtitle').textContent = cat === 'quran'
+          ? 'أضف معرفات التلاوات داخل مصفوفة QURAN_IDS'
+          : 'أضف معرفات المقاطع الموسيقية داخل مصفوفة MUSIC_IDS';
+      }
+    }
+
+    function buildListHtml(arr, catKey) {
+      if (!arr.length) {
         return `
-          <button onclick="selectAudioTrack(${idx})" class="w-full p-2.5 rounded-2xl border ${sel ? 'border-sage-500 bg-sage-50/70' : 'border-sand-200 bg-sand-50/40 hover:bg-sand-100'} flex items-center gap-3 text-right transition">
+          <div class="p-4 rounded-2xl border border-dashed border-sand-300 bg-sand-50/70 text-center space-y-1">
+            <p class="text-xs font-bold text-slate-600">${catKey === 'quran' ? 'لا توجد تلاوات مضافة في قسم القرآن حالياً' : 'لا توجد مقاطع مضافة في قسم الموسيقى حالياً'}</p>
+            <p class="text-[11px] text-slate-400">${catKey === 'quran' ? 'أضف روابط/معرفات القرآن في QURAN_IDS داخل الكود' : 'أضف روابط/معرفات الموسيقى الهادئة في MUSIC_IDS داخل الكود'}</p>
+          </div>`;
+      }
+      return arr.map((t, idx) => {
+        const sel = activeCategory === catKey && idx === currentTrackIdx;
+        const activeBorder = catKey === 'quran' ? 'border-sage-500 bg-sage-50/80' : 'border-tealcalm-500 bg-teal-50/60';
+        return `
+          <button type="button" onclick="selectAudioTrack('${catKey}', ${idx})" class="w-full p-2.5 rounded-2xl border ${sel ? activeBorder : 'border-sand-200 bg-sand-50/40 hover:bg-sand-100'} flex items-center gap-3 text-right transition">
             <span class="relative w-14 h-10 rounded-lg overflow-hidden shrink-0 bg-sand-200">
               <img src="https://i.ytimg.com/vi/${t.id}/default.jpg" alt="" loading="lazy" class="w-full h-full object-cover">
               ${sel && isAudioPlaying ? '<span class="absolute inset-0 bg-sage-800/60 text-white flex items-center justify-center text-xs"><i class="fa-solid fa-volume-high"></i></span>' : ''}
             </span>
-            <span class="min-w-0">
+            <span class="min-w-0 flex-1">
               <span class="block font-bold text-xs text-slate-800 line-clamp-2">${t.title}</span>
               <span class="block text-[11px] text-slate-500 truncate">${t.subtitle}</span>
             </span>
@@ -828,26 +944,57 @@
       }).join('');
     }
 
+    function renderTrackList() {
+      document.getElementById('quran-count-badge').textContent = `${quranTracks.length} تلاوة`;
+      document.getElementById('music-count-badge').textContent = `${musicTracks.length} مقطع`;
+      document.getElementById('quran-track-list').innerHTML = buildListHtml(quranTracks, 'quran');
+      document.getElementById('music-track-list').innerHTML = buildListHtml(musicTracks, 'music');
+    }
+
     function updateTrackHeader() {
+      const list = getActiveList();
       const t = list[currentTrackIdx];
+      updateCategoryButtons();
       if (!t) return;
       document.getElementById('track-title').textContent = t.title;
       document.getElementById('track-subtitle').textContent = t.subtitle;
     }
 
     function loadTrack(autoplay) {
+      const list = getActiveList();
       const t = list[currentTrackIdx];
       updateTrackHeader();
       renderTrackList();
-      if (!ytMain || !ytMain.loadVideoById) return;
+      if (!t || !ytMain || !ytMain.loadVideoById) return;
       if (autoplay) ytMain.loadVideoById(t.id); else ytMain.cueVideoById(t.id);
     }
 
-    function selectAudioTrack(idx) { currentTrackIdx = idx; failCount = 0; loadTrack(true); }
-    function nextTrack() { currentTrackIdx = (currentTrackIdx + 1) % list.length; loadTrack(true); }
-    function prevTrack() { currentTrackIdx = (currentTrackIdx - 1 + list.length) % list.length; loadTrack(true); }
+    function selectAudioTrack(catKey, idx) {
+      activeCategory = catKey;
+      currentTrackIdx = idx;
+      failCount = 0;
+      loadTrack(true);
+    }
+
+    function nextTrack() {
+      const list = getActiveList();
+      if (!list.length) return;
+      currentTrackIdx = (currentTrackIdx + 1) % list.length;
+      loadTrack(true);
+    }
+
+    function prevTrack() {
+      const list = getActiveList();
+      if (!list.length) return;
+      currentTrackIdx = (currentTrackIdx - 1 + list.length) % list.length;
+      loadTrack(true);
+    }
 
     function toggleAudioPlay() {
+      if (!getActiveList().length) {
+        showToast('لا توجد مقاطع في هذا القسم حالياً');
+        return;
+      }
       if (!ytMain || !ytMain.getPlayerState) { showToast('جارٍ تحميل المشغّل...'); return; }
       if (ytMain.getPlayerState() === 1) ytMain.pauseVideo(); else ytMain.playVideo();
     }
@@ -876,8 +1023,9 @@
     }
 
     function onMainError() {
+      const list = getActiveList();
       showToast('هذا المقطع غير متاح للتشغيل داخل الموقع');
-      if (++failCount < list.length) nextTrack();
+      if (list.length > 0 && ++failCount < list.length) nextTrack();
     }
 
     function initPlayers() {
@@ -885,10 +1033,14 @@
       const vars = { playsinline: 1, rel: 0, modestbranding: 1 };
       if (location.protocol.startsWith('http')) vars.origin = location.origin;
       const common = { width: '100%', height: '100%', host: 'https://www.youtube-nocookie.com', playerVars: vars };
+
+      const initialList = getActiveList();
+      const firstId = initialList.length ? initialList[0].id : (bookTrack ? bookTrack.id : 'eUDVUZZyA0M');
+
       currentTrackIdx = 0;
       updateTrackHeader();
       renderTrackList();
-      ytMain = new YT.Player('yt-main', Object.assign({ videoId: list[0].id, events: { onStateChange: onMainState, onError: onMainError } }, common));
+      ytMain = new YT.Player('yt-main', Object.assign({ videoId: firstId, events: { onStateChange: onMainState, onError: onMainError } }, common));
       if (bookTrack) {
         document.getElementById('book-video-wrap').classList.remove('hidden');
         document.getElementById('book-video-title').textContent = bookTrack.title;
