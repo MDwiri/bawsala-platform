@@ -4,12 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>مبادرة بوصلة | مساحتك لتجديد الطاقة والهدوء</title>
+  <meta name="description" content="مبادرة بوصلة: مساحتك لتجديد الطاقة والهدوء. تمارين تنفس، قرآن كريم وموسيقى هادئة، قراءة، ومسار رياضي 2 كم." />
+  <meta name="theme-color" content="#46735E" />
+  <meta property="og:title" content="مبادرة بوصلة" />
+  <meta property="og:description" content="مساحتك الآمنة للتوازن وتجديد الطاقة" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bawsala-jo.com/" />
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Tajawal & Cairo -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Real, scannable QR code generator -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
@@ -54,6 +62,7 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* Smooth tab transitions */
     .tab-section {
       display: none;
       animation: fadeIn 0.35s ease-out;
@@ -67,10 +76,12 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Breathing Circle Animation */
     .breath-circle {
       transition: transform 4s cubic-bezier(0.4, 0, 0.2, 1), background-color 1.5s ease, box-shadow 1.5s ease;
     }
 
+    /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 4px;
     }
@@ -82,6 +93,7 @@
       border-radius: 10px;
     }
 
+    /* Pulse ring for compass icon */
     @keyframes softPulse {
       0%, 100% { transform: scale(1); opacity: 0.9; }
       50% { transform: scale(1.06); opacity: 1; }
@@ -123,6 +135,7 @@
       <!-- ========================================================= -->
       <section id="tab-home" class="tab-section active space-y-5">
 
+        <!-- Hero Banner -->
         <div class="relative rounded-3xl bg-gradient-to-bl from-sage-700 via-sage-600 to-tealcalm-600 text-white p-6 shadow-lg overflow-hidden">
           <div class="relative z-10 space-y-2.5">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-xs font-medium backdrop-blur-sm">
@@ -141,10 +154,12 @@
               </button>
             </div>
           </div>
+          <!-- Decorative Circles -->
           <div class="w-40 h-40 rounded-full bg-white/10 absolute -bottom-12 -left-10 pointer-events-none"></div>
           <div class="w-24 h-24 rounded-full bg-tealcalm-500/30 absolute -top-6 -left-4 pointer-events-none"></div>
         </div>
 
+        <!-- Positive Daily Message Card -->
         <div class="bg-white rounded-3xl p-5 shadow-sm border border-sand-200/80 space-y-3.5">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
@@ -158,7 +173,7 @@
 
           <div class="bg-sand-50 rounded-2xl p-4 border border-sand-200/60 min-h-[105px] flex items-center">
             <p id="positive-quote-text" class="text-slate-700 font-medium text-base leading-relaxed transition-opacity duration-300">
-              «لا بأس أن تبطئ خطواتك قليلاً؛ الأهم أن تواصل السير في الاتجاه الذي يمنح روحك السلام.»
+              "لا بأس أن تبطئ خطواتك قليلاً؛ الأهم أن تواصل السير في الاتجاه الذي يمنح روحك السلام."
             </p>
           </div>
 
@@ -172,9 +187,11 @@
           </div>
         </div>
 
+        <!-- Quick Access Grid -->
         <div class="space-y-2.5">
           <h3 class="font-display font-bold text-sm text-slate-600 px-1">استكشف أقسام المبادرة</h3>
           <div class="grid grid-cols-2 gap-3">
+            <!-- Card 1 -->
             <button onclick="switchTab('relax')" class="bg-white p-4 rounded-2xl border border-sand-200/80 shadow-sm hover:border-sage-400 transition text-right space-y-2 active:scale-98">
               <div class="w-10 h-10 rounded-xl bg-sage-100 text-sage-700 flex items-center justify-center text-lg">
                 <i class="fa-solid fa-lungs"></i>
@@ -185,26 +202,29 @@
               </div>
             </button>
 
-            <button onclick="switchTab('relax'); setTimeout(() => scrollToAudio(), 120)" class="bg-white p-4 rounded-2xl border border-sand-200/80 shadow-sm hover:border-sage-400 transition text-right space-y-2 active:scale-98">
+            <!-- Card 2 -->
+            <button onclick="switchTab('relax'); setTimeout(() => scrollToAudio(), 100)" class="bg-white p-4 rounded-2xl border border-sand-200/80 shadow-sm hover:border-sage-400 transition text-right space-y-2 active:scale-98">
               <div class="w-10 h-10 rounded-xl bg-teal-50 text-tealcalm-600 flex items-center justify-center text-lg">
-                <i class="fa-brands fa-spotify"></i>
+                <i class="fa-solid fa-headphones"></i>
               </div>
               <div>
-                <h4 class="font-display font-bold text-sm text-slate-800">موسيقى Spotify</h4>
-                <p class="text-xs text-slate-500 mt-0.5">استماع مدمج داخل بوصلة</p>
+                <h4 class="font-display font-bold text-sm text-slate-800">القرآن والموسيقى</h4>
+                <p class="text-xs text-slate-500 mt-0.5">تلاوات وأصوات طبيعة مريحة</p>
               </div>
             </button>
 
+            <!-- Card 3 -->
             <button onclick="switchTab('read')" class="bg-white p-4 rounded-2xl border border-sand-200/80 shadow-sm hover:border-sage-400 transition text-right space-y-2 active:scale-98">
               <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center text-lg">
                 <i class="fa-solid fa-book-open"></i>
               </div>
               <div>
-                <h4 class="font-display font-bold text-sm text-slate-800">48 قاعدة للقوة</h4>
-                <p class="text-xs text-slate-500 mt-0.5">ملخصات وقواعد مختارة</p>
+                <h4 class="font-display font-bold text-sm text-slate-800">القراءة والاستماع</h4>
+                <p class="text-xs text-slate-500 mt-0.5">كتاب 48 قاعدة للقوة (قراءة وصوت)</p>
               </div>
             </button>
 
+            <!-- Card 4 -->
             <button onclick="switchTab('trail')" class="bg-white p-4 rounded-2xl border border-sand-200/80 shadow-sm hover:border-sage-400 transition text-right space-y-2 active:scale-98">
               <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg">
                 <i class="fa-solid fa-person-biking"></i>
@@ -220,7 +240,7 @@
       </section>
 
       <!-- ========================================================= -->
-      <!-- SECTION 2: الراحة والاستماع (RELAXATION & SPOTIFY EMBED)    -->
+      <!-- SECTION 2: الراحة وتجديد الطاقة (RELAXATION & AUDIO)        -->
       <!-- ========================================================= -->
       <section id="tab-relax" class="tab-section space-y-5">
 
@@ -236,6 +256,7 @@
             </span>
           </div>
 
+          <!-- Breathing Mode Selector -->
           <div class="grid grid-cols-2 gap-2 bg-sand-100 p-1.5 rounded-2xl">
             <button id="mode-balance" onclick="setBreathingMode('balance')" class="py-2 px-3 rounded-xl text-xs font-bold bg-white text-sage-800 shadow-sm transition">
               توازن سريع (4-4-4)
@@ -245,6 +266,7 @@
             </button>
           </div>
 
+          <!-- Visual Breathing Circle -->
           <div class="py-6 flex flex-col items-center justify-center relative">
             <div class="w-52 h-52 rounded-full bg-sage-50 border-2 border-dashed border-sage-200 flex items-center justify-center relative">
               <div id="breath-circle" class="breath-circle w-28 h-28 rounded-full bg-gradient-to-br from-sage-500 to-tealcalm-500 text-white flex flex-col items-center justify-center shadow-lg">
@@ -257,64 +279,85 @@
             </p>
           </div>
 
+          <!-- Breathing Controls -->
           <div class="flex gap-2.5">
             <button id="breath-start-btn" onclick="toggleBreathing()" class="flex-1 py-3 rounded-2xl bg-sage-600 text-white font-bold text-sm hover:bg-sage-700 active:scale-95 transition flex items-center justify-center gap-2 shadow-sm">
               <i class="fa-solid fa-play"></i> ابدأ التمرين
             </button>
-            <button onclick="resetBreathing()" class="px-4 py-3 rounded-2xl bg-sand-100 text-slate-600 font-bold text-sm hover:bg-sand-200 active:scale-95 transition">
+            <button onclick="resetBreathing()" aria-label="إيقاف التمرين" class="px-4 py-3 rounded-2xl bg-sand-100 text-slate-600 font-bold text-sm hover:bg-sand-200 active:scale-95 transition">
               <i class="fa-solid fa-stop"></i>
             </button>
           </div>
         </div>
 
-        <!-- Spotify Embed Section -->
+        <!-- Audio Player Section (Quran & Ambient Music) -->
         <div id="audio-player-card" class="bg-white rounded-3xl p-5 shadow-sm border border-sand-200/80 space-y-4">
           <div class="flex items-center justify-between">
             <div>
-              <h2 class="font-display font-bold text-lg text-sage-800">مشغل الموسيقى (Spotify)</h2>
-              <p class="text-xs text-slate-500">تضمين مباشر داخل واجهة بوصلة دون تحميل ملفات</p>
+              <h2 class="font-display font-bold text-lg text-sage-800">القرآن الكريم والموسيقى الهادئة</h2>
+              <p class="text-xs text-slate-500">اختر المقطع واستمع داخل بوصلة دون مغادرة الموقع</p>
             </div>
-            <span class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
-              <i class="fa-brands fa-spotify text-lg"></i>
+            <span class="w-9 h-9 rounded-xl bg-teal-50 text-tealcalm-600 flex items-center justify-center">
+              <i class="fa-solid fa-music"></i>
             </span>
           </div>
 
+          <!-- Active Track Player Box -->
           <div class="bg-gradient-to-br from-sage-800 to-tealcalm-600 text-white rounded-2xl p-4 space-y-3 shadow-md">
-            <div class="space-y-0.5">
-              <span class="text-[11px] px-2 py-0.5 rounded-md bg-white/15 text-emerald-100">Spotify Embed</span>
-              <h4 id="spotify-track-title" class="font-display font-bold text-base pt-1">مقطع Spotify المختار</h4>
-              <p class="text-xs text-white/80">يمكنك التبديل بين المقاطع المضافة أو إضافة روابط Spotify جديدة في الكود</p>
+            <!-- Embedded YouTube player (plays INSIDE the site) -->
+            <div class="rounded-xl overflow-hidden aspect-video bg-black/60 w-full"><div id="yt-main"></div></div>
+            <div class="flex items-center justify-between">
+              <div class="space-y-0.5">
+                <span id="track-badge" class="text-[11px] px-2 py-0.5 rounded-md bg-white/15 text-emerald-100">قائمة التشغيل</span>
+                <h4 id="track-title" class="font-display font-bold text-base pt-1">جارٍ التحميل...</h4>
+                <p id="track-subtitle" class="text-xs text-white/80">مبادرة بوصلة</p>
+              </div>
+              <button id="main-play-btn" aria-label="تشغيل / إيقاف" onclick="toggleAudioPlay()" class="w-12 h-12 rounded-full bg-white text-sage-800 flex items-center justify-center text-lg shadow-lg hover:scale-105 active:scale-95 transition">
+                <i class="fa-solid fa-play ml-0.5"></i>
+              </button>
             </div>
 
-            <iframe
-              id="bawsala-spotify-frame"
-              style="border-radius:12px"
-              src="https://open.spotify.com/embed/track/1BncfTJAWxrsxyT9culBrj?utm_source=generator"
-              width="100%"
-              height="152"
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy">
-            </iframe>
+            <!-- Real progress / seek -->
+            <div class="space-y-1" dir="ltr">
+              <input id="audio-seek" type="range" min="0" max="1000" value="0" aria-label="التقدم في التشغيل"
+                     oninput="seekAudio(this.value)" class="w-full h-1.5 accent-emerald-300 cursor-pointer" />
+              <div class="flex justify-between text-[11px] text-white/75">
+                <span id="audio-current-time">00:00</span>
+                <span id="audio-duration">--:--</span>
+              </div>
+            </div>
 
-            <p class="text-[11px] text-emerald-100/90 leading-relaxed">
-              ملاحظة: يعتمد التشغيل الكامل داخل المتصفح على حالة حساب Spotify للمستخدم في متصفحه؛ كما يُنصح باختبار الصفحة من خلال رابط الموقع <code>https://bawsala-jo.com</code> وليس من مسار <code>file://</code>.
-            </p>
+            <!-- Prev / Next / Volume -->
+            <div class="flex items-center justify-between gap-3" dir="ltr">
+              <div class="flex items-center gap-2">
+                <button onclick="prevTrack()" aria-label="المقطع السابق" class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 transition"><i class="fa-solid fa-backward-step"></i></button>
+                <button onclick="nextTrack()" aria-label="المقطع التالي" class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 transition"><i class="fa-solid fa-forward-step"></i></button>
+              </div>
+              <div class="flex items-center gap-2 flex-1 max-w-[150px]">
+                <i class="fa-solid fa-volume-low text-white/80 text-xs"></i>
+                <input id="audio-volume" type="range" min="0" max="100" value="80" aria-label="مستوى الصوت"
+                       oninput="setAudioVolume(this.value)" class="w-full h-1 accent-emerald-300 cursor-pointer" />
+              </div>
+            </div>
+                      </div>
+
+          <!-- Track List -->
+          <div id="audio-track-list" class="space-y-2">
+            <!-- Populated by JS -->
           </div>
-
-          <!-- Spotify Track List -->
-          <div id="spotify-track-list" class="space-y-2"></div>
         </div>
 
       </section>
 
       <!-- ========================================================= -->
-      <!-- SECTION 3: القراءة (48 LAWS SUMMARY)                       -->
+      <!-- SECTION 3: القراءة والاستماع (READING & LISTENING)         -->
       <!-- ========================================================= -->
       <section id="tab-read" class="tab-section space-y-5">
 
+        <!-- Book Header Card -->
         <div class="bg-white rounded-3xl p-5 shadow-sm border border-sand-200/80 space-y-4">
           <div class="flex gap-4 items-center">
+            <!-- Stylized Book Cover -->
             <div class="w-20 h-28 rounded-2xl bg-gradient-to-b from-amber-800 to-stone-900 text-amber-100 p-2.5 flex flex-col justify-between shadow-md shrink-0 border border-amber-500/30">
               <span class="text-[9px] uppercase tracking-wider text-amber-300/80 text-center">ملخص معرفي</span>
               <div class="text-center">
@@ -333,6 +376,17 @@
             </div>
           </div>
 
+          <!-- Mode Switcher: Reading vs Audio Listening -->
+          <div class="grid grid-cols-2 gap-2 bg-sand-100 p-1.5 rounded-2xl">
+            <button id="book-mode-read" onclick="setBookMode('read')" class="py-2 px-3 rounded-xl text-xs font-bold bg-white text-sage-800 shadow-sm transition flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-book-open text-amber-700"></i> القراءة الإلكترونية
+            </button>
+            <button id="book-mode-listen" onclick="setBookMode('listen')" class="py-2 px-3 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-800 transition flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-volume-high text-sage-700"></i> الاستماع الصوتي
+            </button>
+          </div>
+
+          <!-- Chapter Selector -->
           <div class="flex gap-2 overflow-x-auto pb-1">
             <button onclick="selectChapter(0)" id="chap-btn-0" class="chap-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold bg-sage-600 text-white transition">
               القاعدة 1: التقدير والاحترام
@@ -345,7 +399,9 @@
             </button>
           </div>
 
-          <div class="space-y-3">
+          <!-- READING VIEW -->
+          <div id="book-read-view" class="space-y-3">
+            <!-- Font Size Controls -->
             <div class="flex items-center justify-between bg-sand-50 px-3.5 py-2 rounded-xl border border-sand-200/60">
               <span class="text-xs text-slate-500 font-medium">حجم خط القراءة:</span>
               <div class="flex items-center gap-2">
@@ -366,6 +422,36 @@
             </article>
           </div>
 
+          <!-- LISTENING (AUDIOBOOK) VIEW -->
+          <div id="book-listen-view" class="hidden space-y-4">
+            <div class="bg-sand-100 rounded-2xl p-5 text-center space-y-3 border border-sand-200">
+              <div class="w-14 h-14 rounded-2xl bg-sage-600 text-white mx-auto flex items-center justify-center text-2xl shadow">
+                <i class="fa-solid fa-podcast"></i>
+              </div>
+              <div>
+                <h4 id="audio-book-title" class="font-display font-bold text-base text-slate-800">القاعدة 1: احترم مقام من هم أعلى منك خبرة</h4>
+                <p class="text-xs text-slate-500 mt-0.5">نسخة صوتية مخصصة للاستماع أثناء المشي</p>
+              </div>
+
+              <div class="flex items-center justify-center gap-3 pt-2">
+                <button id="tts-play-btn" onclick="toggleBookSpeech()" class="px-5 py-2.5 rounded-xl bg-sage-600 text-white font-bold text-xs hover:bg-sage-700 active:scale-95 transition flex items-center gap-2 shadow">
+                  <i class="fa-solid fa-play"></i> استمع الآن
+                </button>
+                <button onclick="cycleSpeechRate()" id="tts-rate-btn" class="px-3.5 py-2.5 rounded-xl bg-white border border-sand-300 text-slate-700 font-bold text-xs hover:bg-sand-50">
+                  السرعة: 1.0x
+                </button>
+              </div>
+            </div>
+
+            <!-- Explainer video (auto-detected or set via BOOK_VIDEO_ID) -->
+            <div id="book-video-wrap" class="hidden space-y-2">
+              <h4 id="book-video-title" class="font-display font-bold text-sm text-slate-800">شرح الكتاب</h4>
+              <div class="rounded-2xl overflow-hidden aspect-video bg-black/60 w-full"><div id="yt-book"></div></div>
+              <p class="text-[11px] text-slate-400">يُشغَّل داخل الموقع، ولا يتم تحميل الفيديو إلا عند الضغط عليه.</p>
+            </div>
+          </div>
+
+          <!-- Copyright Notice -->
           <p class="text-[11px] text-slate-400 text-center leading-relaxed">
             <i class="fa-solid fa-shield-halved ml-1"></i>
             يتم عرض ملخصات معرفية وتعليمية مختارة لكتاب «48 قاعدة للقوة» بما يتوافق مع حقوق الملكية الفكرية.
@@ -379,6 +465,7 @@
       <!-- ========================================================= -->
       <section id="tab-trail" class="tab-section space-y-5">
 
+        <!-- Trail Overview & Activity Selector -->
         <div class="bg-white rounded-3xl p-5 shadow-sm border border-sand-200/80 space-y-4">
           <div class="flex items-center justify-between">
             <div>
@@ -390,6 +477,7 @@
             </span>
           </div>
 
+          <!-- Activity Type Toggle -->
           <div class="grid grid-cols-2 gap-2.5">
             <button id="act-walk" onclick="setTrailActivity('walk')" class="p-3 rounded-2xl border-2 border-sage-600 bg-sage-50 text-sage-800 flex items-center justify-center gap-2 font-bold text-xs transition">
               <i class="fa-solid fa-person-walking text-base text-sage-600"></i>
@@ -401,6 +489,7 @@
             </button>
           </div>
 
+          <!-- Live Activity Stopwatch -->
           <div class="bg-sand-50 rounded-2xl p-4 border border-sand-200/80 flex items-center justify-between">
             <div>
               <span class="text-[11px] text-slate-500 block">مؤقت النشاط الحالي</span>
@@ -416,17 +505,20 @@
             </div>
           </div>
 
+          <!-- Interactive A -> B Route Map -->
           <div class="space-y-3 pt-1">
             <div class="flex items-center justify-between text-xs font-bold text-slate-600">
               <span>محطات المسار (اضغط على المحطة لعرض الإرشاد)</span>
               <span id="selected-km-label" class="text-sage-700">0.0 كم</span>
             </div>
 
+            <!-- Visual Progress Track -->
             <div class="relative py-4 px-2">
               <div class="h-2 bg-sand-200 rounded-full w-full relative">
                 <div id="trail-progress-fill" class="h-full bg-gradient-to-l from-sage-500 to-tealcalm-500 rounded-full transition-all duration-500" style="width: 8%;"></div>
               </div>
 
+              <!-- 5 Checkpoints -->
               <div class="flex justify-between items-center relative -mt-5">
                 <button onclick="selectCheckpoint(0)" class="cp-dot w-8 h-8 rounded-full bg-sage-600 text-white font-bold text-xs flex items-center justify-center shadow ring-4 ring-white transition">A</button>
                 <button onclick="selectCheckpoint(1)" class="cp-dot w-8 h-8 rounded-full bg-white border-2 border-sand-300 text-slate-600 font-bold text-[11px] flex items-center justify-center shadow-sm transition">0.5</button>
@@ -436,6 +528,7 @@
               </div>
             </div>
 
+            <!-- Checkpoint Tip Card -->
             <div id="checkpoint-card" class="bg-sage-50 rounded-2xl p-4 border border-sage-200/80 space-y-1.5">
               <div class="flex items-center justify-between">
                 <span id="cp-title" class="font-display font-bold text-sm text-sage-800">نقطة البداية (A) - الانطلاق بطاقة إيجابية</span>
@@ -484,7 +577,7 @@
       <div class="bg-white rounded-3xl max-w-xs w-full p-6 text-center space-y-4 shadow-2xl animate-[fadeIn_0.25s_ease-out]">
         <div class="flex justify-between items-center">
           <span class="text-xs font-bold text-sage-700 bg-sage-50 px-3 py-1 rounded-full">لوحات المسار الرياضي</span>
-          <button onclick="toggleQRModal(false)" class="w-8 h-8 rounded-full bg-sand-100 text-slate-600 hover:bg-sand-200 flex items-center justify-center">
+          <button onclick="toggleQRModal(false)" aria-label="إغلاق" class="w-8 h-8 rounded-full bg-sand-100 text-slate-600 hover:bg-sand-200 flex items-center justify-center">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
@@ -494,27 +587,16 @@
           <p class="text-xs text-slate-500">يُوضع هذا الرمز على لوحات المسار (A - B) للدخول المباشر دون تسجيل</p>
         </div>
 
+        <!-- Real QR code (rendered by JS) -->
         <div class="p-4 bg-sand-50 rounded-2xl border-2 border-dashed border-sage-300 inline-block mx-auto">
-          <svg class="w-40 h-40 text-sage-800" viewBox="0 0 100 100" fill="currentColor">
-            <path d="M65 10h25v25H65V10zm5 5v15h15V15H70zm5 5h5v5h-5v-5z"/>
-            <path d="M10 10h25v25H10V10zm5 5v15h15V15H15zm5 5h5v5h-5v-5z"/>
-            <path d="M65 65h25v25H65V65zm5 5v15h15V70H70zm5 5h5v5h-5v-5z"/>
-            <rect x="42" y="12" width="6" height="6"/><rect x="52" y="18" width="6" height="12"/>
-            <rect x="42" y="28" width="6" height="10"/><rect x="12" y="42" width="12" height="6"/>
-            <rect x="30" y="42" width="14" height="6"/><rect x="50" y="42" width="12" height="12"/>
-            <rect x="68" y="42" width="8" height="6"/><rect x="82" y="42" width="8" height="14"/>
-            <rect x="12" y="54" width="8" height="6"/><rect x="26" y="54" width="18" height="6"/>
-            <rect x="12" y="66" width="14" height="6"/><rect x="32" y="66" width="10" height="10"/>
-            <rect x="48" y="62" width="10" height="8"/><rect x="12" y="80" width="10" height="10"/>
-            <rect x="28" y="82" width="16" height="8"/><rect x="50" y="78" width="8" height="12"/>
-          </svg>
+          <div id="qr-box" class="w-40 h-40 flex items-center justify-center"></div>
         </div>
 
-        <p class="text-[11px] text-slate-400">https://bawsala-jo.com</p>
+        <p class="text-[11px] text-slate-400">bawsala-jo.com</p>
       </div>
     </div>
 
-    <!-- Custom Toast Notification -->
+    <!-- Custom Toast Notification (No alert()) -->
     <div id="toast-box" class="fixed bottom-20 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50 whitespace-nowrap">
       تم النسخ بنجاح
     </div>
@@ -525,6 +607,7 @@
   <!-- INTERACTIVE JAVASCRIPT LOGIC                              -->
   <!-- ========================================================= -->
   <script>
+    // ---------------- 1. NAVIGATION TABS ----------------
     function switchTab(tabName) {
       document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
       document.getElementById('tab-' + tabName).classList.add('active');
@@ -553,6 +636,10 @@
     function toggleQRModal(show) {
       const modal = document.getElementById('qr-modal');
       if (show) {
+        const box = document.getElementById('qr-box');
+        if (box && !box.hasChildNodes() && window.QRCode) {
+          new QRCode(box, { text: 'https://bawsala-jo.com/', width: 160, height: 160, colorDark: '#284337', colorLight: '#FAF8F5' });
+        }
         modal.classList.remove('hidden');
         modal.classList.add('flex');
       } else {
@@ -587,22 +674,20 @@
     }
 
     function copyCurrentQuote() {
-      const text = positiveQuotes[currentQuoteIdx] + " — مبادرة بوصلة (https://bawsala-jo.com)";
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => showToast('تم نسخ الرسالة الإيجابية ✨'));
-        return;
+      const text = positiveQuotes[currentQuoteIdx];
+      const full = text + " — مبادرة بوصلة";
+      const done = () => showToast('تم نسخ الرسالة الإيجابية ✨');
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(full).then(done).catch(done);
+      } else {
+        const t = document.createElement('textarea');
+        t.value = full; document.body.appendChild(t); t.select();
+        document.execCommand('copy'); document.body.removeChild(t); done();
       }
-      const tempInput = document.createElement('textarea');
-      tempInput.value = text;
-      document.body.appendChild(tempInput);
-      tempInput.select();
-      document.execCommand('copy');
-      document.body.removeChild(tempInput);
-      showToast('تم نسخ الرسالة الإيجابية ✨');
     }
 
     // ---------------- 3. GUIDED BREATHING EXERCISE ----------------
-    let breathingMode = 'balance';
+    let breathingMode = 'balance'; // 'balance' (4-4-4) or 'deep' (4-7-8)
     let breathingRunning = false;
     let breathingInterval = null;
 
@@ -610,17 +695,17 @@
       balance: {
         hint: 'شهيق من الأنف 4 ثوانٍ • حبس النفس 4 ثوانٍ • زفير بطيء 4 ثوانٍ',
         phases: [
-          { name: 'شهيق عميق...', seconds: 4, scale: 'scale(1.55)' },
-          { name: 'احبس النفس...', seconds: 4, scale: 'scale(1.55)' },
-          { name: 'زفير هادئ...', seconds: 4, scale: 'scale(1.0)' }
+          { name: 'شهيق عميق...', seconds: 4, scale: 'scale(1.55)', color: 'from-sage-500 to-tealcalm-500' },
+          { name: 'احبس النفس...', seconds: 4, scale: 'scale(1.55)', color: 'from-tealcalm-500 to-sage-600' },
+          { name: 'زفير هادئ...', seconds: 4, scale: 'scale(1.0)', color: 'from-sage-600 to-sage-700' }
         ]
       },
       deep: {
         hint: 'شهيق 4 ثوانٍ • حبس النفس 7 ثوانٍ • زفير طويل 8 ثوانٍ',
         phases: [
-          { name: 'شهيق عميق...', seconds: 4, scale: 'scale(1.6)' },
-          { name: 'احبس النفس...', seconds: 7, scale: 'scale(1.6)' },
-          { name: 'زفير بطيء جداً...', seconds: 8, scale: 'scale(1.0)' }
+          { name: 'شهيق عميق...', seconds: 4, scale: 'scale(1.6)', color: 'from-sage-500 to-tealcalm-500' },
+          { name: 'احبس النفس...', seconds: 7, scale: 'scale(1.6)', color: 'from-tealcalm-600 to-sage-700' },
+          { name: 'زفير بطيء جداً...', seconds: 8, scale: 'scale(1.0)', color: 'from-sage-600 to-emerald-700' }
         ]
       }
     };
@@ -643,7 +728,8 @@
         return;
       }
       breathingRunning = true;
-      document.getElementById('breath-start-btn').innerHTML = '<i class="fa-solid fa-pause"></i> إيقاف مؤقت';
+      const startBtn = document.getElementById('breath-start-btn');
+      startBtn.innerHTML = '<i class="fa-solid fa-pause"></i> إيقاف مؤقت';
 
       const phases = modesConfig[breathingMode].phases;
       let phaseIndex = 0;
@@ -682,48 +768,150 @@
       document.getElementById('breath-start-btn').innerHTML = '<i class="fa-solid fa-play"></i> ابدأ التمرين';
     }
 
-    // ---------------- 4. SPOTIFY EMBED LIST ----------------
-    // أضف أي Track ID أو Playlist ID من Spotify هنا
-    const spotifyTracks = [
-      {
-        title: 'مقطع Spotify — 1BncfTJAWxrsxyT9culBrj',
-        subtitle: 'تشغيل مدمج عبر Spotify',
-        embedUrl: 'https://open.spotify.com/embed/track/1BncfTJAWxrsxyT9culBrj?utm_source=generator'
+    // ---------------- 4. INTERNAL PLAYER (YouTube IFrame API: plays inside the site) ----------------
+    // To add a track: put its video ID (the 11 characters after youtu.be/) in PLAYLIST_IDS.
+    const PLAYLIST_IDS = ['eUDVUZZyA0M', '1e9B31FLT-s', 'qJoFnIdB59Y', 'GxzJ2scMHoQ', 'LOMpv4P56DI', 'iNfTSAzl1nI'];
+    // The book-explainer video moves to the Reading tab. Set its ID here, or leave null to auto-detect from its title.
+    const BOOK_VIDEO_ID = null;
+    const BOOK_KEYWORDS = /48|٤٨|قاعد|قوة|laws of power|greene/i;
+
+    let tracks = PLAYLIST_IDS.map((id, i) => ({ id, title: 'مقطع ' + (i + 1), subtitle: 'مبادرة بوصلة' }));
+    let list = tracks.slice();
+    let bookTrack = null;
+    let currentTrackIdx = 0, isAudioPlaying = false, failCount = 0;
+    let ytMain = null, ytBook = null, ytReady = false, metaReady = false;
+
+    function fmtTime(sec) {
+      if (!isFinite(sec) || sec <= 0) return '00:00';
+      const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = Math.floor(sec % 60);
+      return (h ? h + ':' : '') + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    }
+
+    async function fetchMeta(id) {
+      const u = encodeURIComponent('https://www.youtube.com/watch?v=' + id);
+      for (const ep of ['https://www.youtube.com/oembed?format=json&url=', 'https://noembed.com/embed?url=']) {
+        try {
+          const r = await fetch(ep + u);
+          if (r.ok) { const d = await r.json(); if (d && d.title) return d; }
+        } catch (e) {}
       }
-    ];
+      return null;
+    }
 
-    let currentSpotifyIdx = 0;
+    async function loadMeta() {
+      await Promise.race([
+        Promise.all(tracks.map(async t => {
+          const d = await fetchMeta(t.id);
+          if (d) { t.title = d.title; t.subtitle = d.author_name || t.subtitle; }
+        })),
+        new Promise(r => setTimeout(r, 4000))
+      ]);
+      bookTrack = tracks.find(t => BOOK_VIDEO_ID ? t.id === BOOK_VIDEO_ID : BOOK_KEYWORDS.test(t.title)) || null;
+      list = tracks.filter(t => t !== bookTrack);
+      if (!list.length) { list = tracks.slice(); bookTrack = null; }
+    }
 
-    function renderSpotifyList() {
-      const listEl = document.getElementById('spotify-track-list');
-      listEl.innerHTML = spotifyTracks.map((item, idx) => {
-        const active = idx === currentSpotifyIdx;
+    function renderTrackList() {
+      document.getElementById('audio-track-list').innerHTML = list.map((t, idx) => {
+        const sel = idx === currentTrackIdx;
         return `
-          <button type="button" onclick="selectSpotifyTrack(${idx})" class="w-full p-3 rounded-2xl border ${active ? 'border-sage-500 bg-sage-50/70' : 'border-sand-200 bg-sand-50/40 hover:bg-sand-100'} flex items-center justify-between text-right transition">
-            <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-xl ${active ? 'bg-sage-600 text-white' : 'bg-white text-slate-500 border border-sand-200'} flex items-center justify-center text-xs font-bold">
-                <i class="fa-brands fa-spotify"></i>
-              </span>
-              <div>
-                <div class="font-bold text-xs text-slate-800">${item.title}</div>
-                <div class="text-[11px] text-slate-500">${item.subtitle}</div>
-              </div>
-            </div>
-            <span class="text-[11px] font-bold text-sage-700">تشغيل</span>
-          </button>
-        `;
+          <button onclick="selectAudioTrack(${idx})" class="w-full p-2.5 rounded-2xl border ${sel ? 'border-sage-500 bg-sage-50/70' : 'border-sand-200 bg-sand-50/40 hover:bg-sand-100'} flex items-center gap-3 text-right transition">
+            <span class="relative w-14 h-10 rounded-lg overflow-hidden shrink-0 bg-sand-200">
+              <img src="https://i.ytimg.com/vi/${t.id}/default.jpg" alt="" loading="lazy" class="w-full h-full object-cover">
+              ${sel && isAudioPlaying ? '<span class="absolute inset-0 bg-sage-800/60 text-white flex items-center justify-center text-xs"><i class="fa-solid fa-volume-high"></i></span>' : ''}
+            </span>
+            <span class="min-w-0">
+              <span class="block font-bold text-xs text-slate-800 line-clamp-2">${t.title}</span>
+              <span class="block text-[11px] text-slate-500 truncate">${t.subtitle}</span>
+            </span>
+          </button>`;
       }).join('');
     }
 
-    function selectSpotifyTrack(idx) {
-      currentSpotifyIdx = idx;
-      const item = spotifyTracks[idx];
-      document.getElementById('spotify-track-title').textContent = item.title;
-      document.getElementById('bawsala-spotify-frame').src = item.embedUrl;
-      renderSpotifyList();
+    function updateTrackHeader() {
+      const t = list[currentTrackIdx];
+      if (!t) return;
+      document.getElementById('track-title').textContent = t.title;
+      document.getElementById('track-subtitle').textContent = t.subtitle;
     }
 
-    // ---------------- 5. BOOK READING ----------------
+    function loadTrack(autoplay) {
+      const t = list[currentTrackIdx];
+      updateTrackHeader();
+      renderTrackList();
+      if (!ytMain || !ytMain.loadVideoById) return;
+      if (autoplay) ytMain.loadVideoById(t.id); else ytMain.cueVideoById(t.id);
+    }
+
+    function selectAudioTrack(idx) { currentTrackIdx = idx; failCount = 0; loadTrack(true); }
+    function nextTrack() { currentTrackIdx = (currentTrackIdx + 1) % list.length; loadTrack(true); }
+    function prevTrack() { currentTrackIdx = (currentTrackIdx - 1 + list.length) % list.length; loadTrack(true); }
+
+    function toggleAudioPlay() {
+      if (!ytMain || !ytMain.getPlayerState) { showToast('جارٍ تحميل المشغّل...'); return; }
+      if (ytMain.getPlayerState() === 1) ytMain.pauseVideo(); else ytMain.playVideo();
+    }
+
+    function seekAudio(v) {
+      if (ytMain && ytMain.getDuration) ytMain.seekTo((v / 1000) * ytMain.getDuration(), true);
+    }
+
+    function setAudioVolume(v) {
+      if (ytMain && ytMain.setVolume) ytMain.setVolume(+v);
+      if (ytBook && ytBook.setVolume) ytBook.setVolume(+v);
+    }
+
+    function onMainState(e) {
+      if (e.data === 1) {
+        failCount = 0;
+        isAudioPlaying = true;
+        if (ytBook && ytBook.pauseVideo) ytBook.pauseVideo();
+        document.getElementById('main-play-btn').innerHTML = '<i class="fa-solid fa-pause"></i>';
+      } else if (e.data === 2 || e.data === 0) {
+        isAudioPlaying = false;
+        document.getElementById('main-play-btn').innerHTML = '<i class="fa-solid fa-play ml-0.5"></i>';
+        if (e.data === 0) nextTrack();
+      }
+      renderTrackList();
+    }
+
+    function onMainError() {
+      showToast('هذا المقطع غير متاح للتشغيل داخل الموقع');
+      if (++failCount < list.length) nextTrack();
+    }
+
+    function initPlayers() {
+      if (!ytReady || !metaReady || ytMain) return;
+      const vars = { playsinline: 1, rel: 0, modestbranding: 1 };
+      if (location.protocol.startsWith('http')) vars.origin = location.origin;
+      const common = { width: '100%', height: '100%', host: 'https://www.youtube-nocookie.com', playerVars: vars };
+      currentTrackIdx = 0;
+      updateTrackHeader();
+      renderTrackList();
+      ytMain = new YT.Player('yt-main', Object.assign({ videoId: list[0].id, events: { onStateChange: onMainState, onError: onMainError } }, common));
+      if (bookTrack) {
+        document.getElementById('book-video-wrap').classList.remove('hidden');
+        document.getElementById('book-video-title').textContent = bookTrack.title;
+        ytBook = new YT.Player('yt-book', Object.assign({ videoId: bookTrack.id, events: {
+          onStateChange: e => { if (e.data === 1 && ytMain && ytMain.pauseVideo) ytMain.pauseVideo(); }
+        } }, common));
+      }
+    }
+
+    // progress bar + time (YouTube API has no "timeupdate" event, so we poll lightly)
+    setInterval(() => {
+      if (!ytMain || !ytMain.getCurrentTime || !isAudioPlaying) return;
+      const cur = ytMain.getCurrentTime(), dur = ytMain.getDuration();
+      document.getElementById('audio-current-time').textContent = fmtTime(cur);
+      document.getElementById('audio-duration').textContent = fmtTime(dur);
+      if (dur > 0) document.getElementById('audio-seek').value = (cur / dur) * 1000;
+    }, 500);
+
+    window.onYouTubeIframeAPIReady = () => { ytReady = true; initPlayers(); };
+    (function () { const s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(s); })();
+    loadMeta().then(() => { metaReady = true; initPlayers(); renderTrackList(); updateTrackHeader(); });
+
+    // ---------------- 5. BOOK READING & LISTENING (48 LAWS) ----------------
     const bookChapters = [
       {
         title: 'القاعدة 1: احترم مقام من هم أعلى منك خبرة',
@@ -744,9 +932,31 @@
 
     let currentChapter = 0;
     let readerFontSize = 14;
+    let speechRate = 1.0;
+    let isSpeaking = false;
+
+    function setBookMode(mode) {
+      window.speechSynthesis && window.speechSynthesis.cancel();
+      isSpeaking = false;
+      document.getElementById('tts-play-btn').innerHTML = '<i class="fa-solid fa-play"></i> استمع الآن';
+
+      document.getElementById('book-mode-read').className = mode === 'read'
+        ? 'py-2 px-3 rounded-xl text-xs font-bold bg-white text-sage-800 shadow-sm transition flex items-center justify-center gap-1.5'
+        : 'py-2 px-3 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-800 transition flex items-center justify-center gap-1.5';
+      document.getElementById('book-mode-listen').className = mode === 'listen'
+        ? 'py-2 px-3 rounded-xl text-xs font-bold bg-white text-sage-800 shadow-sm transition flex items-center justify-center gap-1.5'
+        : 'py-2 px-3 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-800 transition flex items-center justify-center gap-1.5';
+
+      document.getElementById('book-read-view').classList.toggle('hidden', mode !== 'read');
+      document.getElementById('book-listen-view').classList.toggle('hidden', mode !== 'listen');
+    }
 
     function selectChapter(idx) {
       currentChapter = idx;
+      window.speechSynthesis && window.speechSynthesis.cancel();
+      isSpeaking = false;
+      document.getElementById('tts-play-btn').innerHTML = '<i class="fa-solid fa-play"></i> استمع الآن';
+
       document.querySelectorAll('.chap-btn').forEach((btn, i) => {
         btn.className = i === idx
           ? 'chap-btn shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold bg-sage-600 text-white transition'
@@ -756,13 +966,42 @@
       const ch = bookChapters[idx];
       document.getElementById('chapter-title').textContent = ch.title;
       document.getElementById('chapter-body').textContent = ch.body;
-      const parts = ch.takeaway.split(':');
-      document.getElementById('chapter-takeaway').innerHTML = `<strong>${parts[0]}:</strong>${parts.slice(1).join(':')}`;
+      document.getElementById('chapter-takeaway').innerHTML = `<strong>${ch.takeaway.split(':')[0]}:</strong>${ch.takeaway.split(':')[1]}`;
+      document.getElementById('audio-book-title').textContent = ch.title;
     }
 
     function changeReaderFont(delta) {
       readerFontSize = Math.min(20, Math.max(12, readerFontSize + delta));
       document.getElementById('chapter-body').style.fontSize = `${readerFontSize}px`;
+    }
+
+    function toggleBookSpeech() {
+      if (!('speechSynthesis' in window)) {
+        showToast('القارئ الصوتي غير مدعوم في هذا المتصفح');
+        return;
+      }
+      if (isSpeaking) {
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+        document.getElementById('tts-play-btn').innerHTML = '<i class="fa-solid fa-play"></i> استمع الآن';
+        return;
+      }
+      const ch = bookChapters[currentChapter];
+      const utterance = new SpeechSynthesisUtterance(`${ch.title}. ${ch.body}. ${ch.takeaway}`);
+      utterance.lang = 'ar-SA';
+      utterance.rate = speechRate;
+      utterance.onend = () => {
+        isSpeaking = false;
+        document.getElementById('tts-play-btn').innerHTML = '<i class="fa-solid fa-play"></i> استمع الآن';
+      };
+      window.speechSynthesis.speak(utterance);
+      isSpeaking = true;
+      document.getElementById('tts-play-btn').innerHTML = '<i class="fa-solid fa-stop"></i> إيقاف الصوت';
+    }
+
+    function cycleSpeechRate() {
+      speechRate = speechRate === 1.0 ? 1.25 : 1.0;
+      document.getElementById('tts-rate-btn').textContent = `السرعة: ${speechRate.toFixed(2).replace('.00', '.0')}x`;
     }
 
     // ---------------- 6. 2KM TRAIL (A -> B) & STOPWATCH ----------------
@@ -831,8 +1070,10 @@
       });
     }
 
+    // Initialize default track list on load
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleQRModal(false); });
     window.addEventListener('DOMContentLoaded', () => {
-      renderSpotifyList();
+      renderTrackList();
     });
   </script>
 </body>
