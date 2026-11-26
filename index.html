@@ -812,7 +812,7 @@
 
     // فيديو شرح الكتاب ينتقل إلى تبويب القراءة
     const BOOK_VIDEO_ID = null;
-    const BOOK_KEYWORDS = /48|٤٨|قاعد|قوة|laws of power|greene/i;
+    const BOOK_KEYWORDS = /48|٤٨|قانون|قوانين|قاعد|قوة|كتاب|فيلم|قاسم|laws of power|greene/i;
     const QURAN_KEYWORDS = /قرآن|قران|سورة|تلاوة|آية|اية|مصحف|quran|surah|recitation/i;
 
     let quranTracks = QURAN_IDS.map((id, i) => ({ id, title: 'تلاوة قرآنية ' + (i + 1), subtitle: 'القسم الأول • القرآن الكريم', category: 'quran' }));
@@ -857,9 +857,9 @@
         new Promise(r => setTimeout(r, 4000))
       ]);
 
-      // استخراج فيديو شرح الكتاب إن وُجد
+      // استخراج فيديو شرح الكتاب إن وُجد وإبعاده تماماً عن قوائم القرآن والموسيقى
       bookTrack = combined.find(t => BOOK_VIDEO_ID ? t.id === BOOK_VIDEO_ID : BOOK_KEYWORDS.test(t.title)) || null;
-      const remaining = combined.filter(t => t !== bookTrack);
+      const remaining = combined.filter(t => t !== bookTrack && !BOOK_KEYWORDS.test(t.title));
 
       // إذا كان المستخدم وضع الكل في MUSIC_IDS مثلاً، نفرز أي مقطع قرآني واضح تلقائياً إلى قسم القرآن
       const explicitQuran = remaining.filter(t => t.category === 'quran' || QURAN_KEYWORDS.test(t.title));
